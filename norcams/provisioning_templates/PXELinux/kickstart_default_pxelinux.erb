@@ -22,7 +22,7 @@ ONTIMEOUT installer
 LABEL installer
   MENU LABEL <%= template_name %>
   KERNEL <%= @kernel %>
-  APPEND initrd=<%= @initrd %> ks=<%= foreman_url('provision') %> <%= pxe_kernel_options %> <%= snippet("norcams_kickstart_kernel_options").strip %>
+  APPEND initrd=<%= @initrd %> ks=<%= foreman_url('provision') %> <%= pxe_kernel_options %> <%= snippet("norcams-kickstart_kernel_options").strip %>
   IPAPPEND 2
 
 <%= snippet_if_exists(template_name + " custom menu") %>
