@@ -307,7 +307,7 @@ mkdir -p /etc/udev/rules.d/60-net.rules
 <%= snippet 'yum_proxy' %>
 
 <% if rhel_compatible && !host_param_false?('enable-epel') || !host_param_false?('enable-norcams-epel') -%>
-<%= snippet 'norcams epel' -%>
+<%= snippet 'norcams-epel' -%>
 <% end -%>
 
 <%= snippet 'redhat_register' %>
@@ -328,9 +328,9 @@ mkdir -p /etc/udev/rules.d/60-net.rules
 
 <% if puppet_enabled %>
 <% if host_param_true?('enable-puppetlabs-repo') || host_param_true?('enable-puppetlabs-puppet6-repo')|| host_param_true?('enable-puppetlabs-puppet5-repo') || host_param_true?('enable-norcams-repo') -%>
-<%= snippet 'norcams puppetlabs_repo' %>
+<%= snippet 'norcams-puppetlabs_repo' %>
 <% end -%>
-<%= snippet 'norcams puppet_setup' %>
+<%= snippet 'norcams-puppet_setup' %>
 <% end -%>
 
 <% if salt_enabled %>
