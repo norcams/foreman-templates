@@ -63,6 +63,7 @@ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/pe
   iface = @host.provision_interface
   ### NORCAMS (start) ###
   ifnames = host_param('ifnames') ? host_param('ifnames') : "0"
+  environment = host_param('environment') ? host_param('environment') : 'prod'
   ### NORCAMS (end) ###
 -%>
 
