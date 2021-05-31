@@ -298,7 +298,7 @@ mkdir -p /etc/udev/rules.d/60-net.rules
 
 ### NORCAMS (start) ###
 # **** Disable NetworkManager on el7
-<% if @host.operatingsystem.family == 'Redhat' and @host.operatingsystem.major.to_i >= 7 -%>
+<% if @host.operatingsystem.family == 'Redhat' and @host.operatingsystem.major.to_i == 7 -%>
 /usr/bin/systemctl disable NetworkManager.service
 <% end -%>
 ### NORCAMS (end) ###
