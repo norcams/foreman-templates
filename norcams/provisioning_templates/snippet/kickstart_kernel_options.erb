@@ -20,7 +20,10 @@ snippet: true
   options = []
 
   # NORCAMS
-  options.push("net.ifnames=0")
+  ifnames = host_param('ifnames') ? host_param('ifnames') : "0"
+  biosdevname = host_param('biosdevname') ? host_param('biosdevname') : "0"
+  options.push("net.ifnames=#{ifnames}")
+  options.push("biosdevname=#{biosdevname}")
 
   if rhel_compatible && os_major < 8
     # replaced with BOOTIF in EL8+
