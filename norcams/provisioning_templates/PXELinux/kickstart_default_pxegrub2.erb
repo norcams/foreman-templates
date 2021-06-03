@@ -13,13 +13,14 @@ oses:
 
 <%
   ifnames = host_param('ifnames') ? host_param('ifnames') : "0"
+  biosdevname = host_param('biosdevname') ? host_param('biosdevname') : "0"
 
   major = @host.operatingsystem.major.to_i
   mac = @host.provision_interface.mac
 
   # Tell Anaconda to perform network functions with boot interface
   #  both current and legacy syntax provided
-  options = ["network", "ksdevice=bootif", "ks.device=bootif", "net.ifnames=#{ifnames}"]
+  options = ["network", "ksdevice=bootif", "ks.device=bootif", "net.ifnames=#{ifnames}", "biosdevname=#{biosdevname}"]
   if mac
     bootif = '00-' + mac.gsub(':', '-')
     options.push("BOOTIF=#{bootif}")
