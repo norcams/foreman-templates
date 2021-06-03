@@ -11,7 +11,12 @@ oses:
   installdevice = host_param('installdevice') ? host_param('installdevice') : 'default'
   ondisk        = host_param('installdevice') ? "--ondisk=#{installdevice}" : ''
   clear_osdisk  = host_param('keepdevices')   ? "--drives=#{installdevice}" : ''
+  driverdisk    = host_param('extradrivers')  ? host_param('extradrivers')  : nil
 %>
+
+<% if host_param('extradrivers') -%>
+driverdisk --source=<%= driverdisk %>
+<% end -%>
 
 zerombr
 clearpart --all --initlabel <%= clear_osdisk %>
