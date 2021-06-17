@@ -297,9 +297,17 @@ mkdir -p /etc/udev/rules.d/60-net.rules
 <%= snippet 'kickstart_networking_setup' %>
 
 ### NORCAMS (start) ###
-# **** Disable NetworkManager on el7
-<% if @host.operatingsystem.family == 'Redhat' and @host.operatingsystem.major.to_i == 7 -%>
+# **** Disable NetworkManager on el7 or newer
+<% if @host.operatingsystem.family == 'Redhat' and @host.operatingsystem.major.to_i >= 7 -%>
 /usr/bin/systemctl disable NetworkManager.service
+<% end -%>
+### NORCAMS (end) ###
+
+### NORCAMS (start) ###
+# **** Enable legacy network scripts for el8
+<% if @host.operatingsystem.family == 'Redhat' and @host.operatingsystem.major.to_i == 8 -%>
+yum install -y network-scripts
+/usr/bin/systemctl enable network.service
 <% end -%>
 ### NORCAMS (end) ###
 
