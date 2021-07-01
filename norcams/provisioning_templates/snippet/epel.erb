@@ -19,8 +19,7 @@ cat > /etc/yum.repos.d/epel.repo << EOF
 name=Extra Packages for Enterprise Linux 7 - $basearch
 baseurl=https://download.iaas.uio.no/nrec/<%= environment %>/el<%=os_major %>/epel
 enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgcheck=0
 EOF
 <% else % -%>
 rpm -Uvh<%= http_proxy %><%= http_port %> <%= repo_base %>/epel-release-latest-<%= os_major %>.noarch.rpm
