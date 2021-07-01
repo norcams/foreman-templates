@@ -59,7 +59,7 @@ name=Puppetlabs Yum Repo
 baseurl=https://iaas-repo.uio.no/nrec/<%= environment %>/el<%= os_major %>/<%= repo_name %>
 gpgkey=https://iaas-repo.uio.no/nrec/<%= environment %>/el<%= os_major %>/<%= repo_name %>/RPM-GPG-KEY-puppet
 enabled=1
-gpgcheck=1
+gpgcheck=0
 EOF
 <% else % -%>
 rpm -Uvh<%= http_proxy %><%= http_port %> https://<%= repo_host %>/<%= repo_subdir %><%= repo_name %>-<%= repo_os %>-<%= os_major %>.noarch.rpm
