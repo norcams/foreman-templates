@@ -86,11 +86,6 @@ if host_param('kickstart_liveimg')
 liveimg --url=<%= liveimg_url %> <%= proxy_string %>
 <% else %>
 <%= @mediapath %><%= proxy_string %>
-### NORCAMS (start) ###
-<% if rhel_compatible && @host.operatingsystem.name.downcase.include?("centos") && os_major >= 8 -%>
-repo --name AppStream --baseurl https://download.iaas.uio.no/uh-iaas/<%= environment %>/centos8-AppStream
-<% end -%>
-### NORCAMS (end) ###
 <% @additional_media.each do |medium| -%>
 <% if rhel_compatible && @host.operatingsystem.name.downcase.include?("centos") && os_major >= 8 && medium[:url] && medium[:url].include?("AppStream") -%>
 # renamed from "<%= medium[:url] %>" for CentOS Anaconda to work
