@@ -17,7 +17,7 @@ environment = host_param('environment') ? host_param('environment') : 'prod'
 cat > /etc/yum.repos.d/epel.repo << EOF
 [epel]
 name=Extra Packages for Enterprise Linux 7 - $basearch
-baseurl=https://download.iaas.uio.no/uh-iaas/<%= environment %>/epel
+baseurl=https://download.iaas.uio.no/nrec/<%= environment %>/el<%=os_major %>/epel
 enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
