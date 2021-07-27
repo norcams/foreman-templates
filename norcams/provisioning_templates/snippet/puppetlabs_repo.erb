@@ -39,13 +39,11 @@ if host_param_true?('enable-puppetlabs-repo')
   repo_name = 'puppetlabs-release'
   repo_subdir = ''
 elsif host_param_true?('enable-puppetlabs-puppet6-repo')
-  repo_name = 'puppet6-release'
-  repo_subdir = 'puppet6/'
+  repo_name = 'puppetlabs6'
+  repo_subdir = ''
 elsif host_param_true?('enable-puppetlabs-puppet5-repo')
-  repo_name = 'puppet5-release'
-  repo_subdir = 'puppet5/'
-elsif host_param_true?('enable-norcams-repo')
   repo_name = 'puppetlabs5'
+  repo_subdir = ''
 end
 -%>
 
