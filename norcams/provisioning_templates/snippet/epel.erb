@@ -14,9 +14,11 @@ os_major   = @host.operatingsystem.major.to_i
 environment = host_param('environment') ? host_param('environment') : 'prod'
 -%>
 <% if host_param_true?('enable-norcams-epel') -%>
+/usr/bin/curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-<%=os_major %> https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-<%=os_major %>
+
 cat > /etc/yum.repos.d/epel.repo << EOF
 [epel]
-name=Extra Packages for Enterprise Linux 7 - $basearch
+name=Extra Packages for Enterprise Linux <%=os_major %> - $basearch
 baseurl=https://download.iaas.uio.no/nrec/<%= environment %>/el<%=os_major %>/epel
 enabled=1
 gpgcheck=0
