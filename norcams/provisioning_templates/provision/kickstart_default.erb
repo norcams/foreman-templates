@@ -34,6 +34,7 @@ This template accepts the following parameters:
 - enable-epel: boolean (default=false)  ### NORCAMS: default changed from true ###
 - enable-norcams-epel: boolean (default=true)
 - enable-norcams-repo: boolean (default=false)
+- leavebootorder: boolean (default=false)  ### Leave the BIOS boot order in order to always boot from network if true
   ### NORCAMS (end) ###
 
 
@@ -64,6 +65,7 @@ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/pe
   ### NORCAMS (start) ###
   ifnames = host_param('ifnames') ? host_param('ifnames') : "0"
   environment = host_param('environment') ? host_param('environment') : 'prod'
+  leavebootorder = host_param('leavebootorder') ? true : false
   ### NORCAMS (end) ###
 -%>
 
@@ -212,7 +214,7 @@ repo --name="Server-Mysql"
 bootloader --append="<%= host_param('bootloader-append') || 'nofb quiet splash=quiet' %> <%= ks_console %>" <%= @grub_pass %>
 part biosboot --fstype=biosboot --size=1
 <% else -%>
-bootloader --location=mbr --append="<%= host_param('bootloader-append') || 'nofb quiet splash=quiet' %>" <%= @grub_pass %>
+bootloader --location=mbr <% if host_param_true?('leavebootorder') -%>--leavebootorder <% end -%>--append="<%= host_param('bootloader-append') || 'nofb quiet splash=quiet' %>" <%= @grub_pass %>
 <% if os_major == 5 -%>
 key --skip
 <% end -%>
