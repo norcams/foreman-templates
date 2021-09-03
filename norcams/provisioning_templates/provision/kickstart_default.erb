@@ -362,6 +362,13 @@ fi
 <% end -%>
 ### NORCAMS (end moved block) ###
 
+<% if rhel_compatible && os_major == 8 -%>
+### NORCAMS (start) ###
+# **** Rebuild initramfs if dummy.conf exists
+if [ -f "/etc/modprobe.d/dummy.conf" ] ; then FACTER_RUNMODE=kickstart /opt/puppetlabs/bin/puppet agent -t ; fi
+### NORCAMS (end) ###
+<% end -%>
+
 <%= snippet 'efibootmgr_netboot' %>
 
 touch /tmp/foreman_built
