@@ -169,7 +169,7 @@ After=network.service
 [Service]
 Type=oneshot
 Environment=FACTER_RUNMODE=bootstrap
-ExecStart=<%= bin_path %>/puppet agent -t
+ExecStart=-<%= bin_path %>/puppet agent -t
 ExecStartPost=/bin/systemctl disable puppetrun_firstboot.service
 
 [Install]
