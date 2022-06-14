@@ -50,12 +50,12 @@ end
 <% if repo_name -%>
 <% if os_family == 'Redhat' || os_name == 'SLES' -%>
 <% if host_param_true?('enable-norcams-repo') -%>
-rpm --import https://iaas-repo.uio.no/nrec/<%= environment %>/el<%= os_major %>/<%= repo_name %>/RPM-GPG-KEY-puppetlabs
+rpm --import https://iaas-repo.uio.no/nrec/<%= environment %>/el<%= os_major %>/<%= repo_name %>/RPM-GPG-KEY-puppet-20250406
 cat > /etc/yum.repos.d/puppetlabs.repo << EOF
 [puppetlabs]
 name=Puppetlabs Yum Repo
 baseurl=https://iaas-repo.uio.no/nrec/<%= environment %>/el<%= os_major %>/<%= repo_name %>
-gpgkey=https://iaas-repo.uio.no/nrec/<%= environment %>/el<%= os_major %>/<%= repo_name %>/RPM-GPG-KEY-puppet
+gpgkey=https://iaas-repo.uio.no/nrec/<%= environment %>/el<%= os_major %>/<%= repo_name %>/RPM-GPG-KEY-puppet-20250406
 enabled=1
 gpgcheck=0
 EOF
