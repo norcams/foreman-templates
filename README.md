@@ -1,6 +1,7 @@
 # Foreman templates
 
-DEFUNCT - DO NOT USE!!!!
+# DEFUNCT - DO NOT USE!!!!
+
 This repository is deprecated! All templates we need to adapt are now maintained in [ansible_foreman](https://github.com/norcams/ansible-foreman)_ and activated by Ansible jobs in [foreman_setup](https://github.com/norcams/foreman-setup)_. Please make any alterations you need in there instead!
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
